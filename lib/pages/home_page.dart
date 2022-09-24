@@ -10,7 +10,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final formkey = GlobalKey<FormState>();
   final snackbar = const SnackBar(
-    content: Text('Submitting form'),
+    content: Text('Details are being saved@b'),
     duration: Duration(seconds: 5),
   );
 
@@ -53,9 +53,11 @@ class _HomePageState extends State<HomePage> {
                           labelText: 'Enter your name',
                           suffixIcon: Icon(Icons.person),
                         ),
+                        maxLength: 30,
                         validator: ((value) {
                           if (value!.isEmpty ||
-                              !RegExp(r'^[a-z A-Z] +$').hasMatch(value)) {
+                              !RegExp(r"^[a-zA-Z][a-zA-Z\s]{0,100}[a-zA-Z]$")
+                                  .hasMatch(value)) {
                             return 'Enter valid name';
                           } else {
                             return null;
@@ -68,10 +70,13 @@ class _HomePageState extends State<HomePage> {
                       TextFormField(
                         decoration: const InputDecoration(
                             labelText: 'Enter your email',
+                            hintText: 'example@babcock.edu.ng',
                             suffixIcon: Icon(Icons.email)),
+                        maxLength: 50,
                         validator: ((value) {
                           if (value!.isEmpty ||
-                              !RegExp(r'^[a-z A-Z] +$').hasMatch(value)) {
+                              !RegExp(r"^[A-Za-z0-9._%+-]+@babcock.edu.ng$")
+                                  .hasMatch(value)) {
                             return 'Enter valid email';
                           } else {
                             return null;
@@ -86,10 +91,12 @@ class _HomePageState extends State<HomePage> {
                           labelText: 'Enter your password',
                           suffixIcon: Icon(Icons.lock),
                         ),
+                        maxLength: 18,
                         obscureText: true,
                         validator: ((value) {
                           if (value!.isEmpty ||
-                              !RegExp(r'^[a-z A-Z] +$').hasMatch(value)) {
+                              !RegExp(r"^[a-zA-Z][a-zA-Z\s]{0,100}[a-zA-Z]$")
+                                  .hasMatch(value)) {
                             return 'Enter valid password';
                           } else {
                             return null;
